@@ -1,0 +1,19 @@
+{
+    "prefix": "{{ env "FULLERITE_PREFIX" }}.",
+    "interval": {{ env "FULLERITE_INTERVAL" }},
+    "fulleritePort": 19191,
+    "internalServer": {"port":"29090","path":"/metrics"},
+    "collectorsConfigPath": "/etc/fullerite/conf.d",
+
+    "collectors": ["DockerStats"],
+
+    "handlers": {
+        "Graphite": {
+            "server": "carbon.service.consul",
+            "port": "2003",
+            "interval": "{{ env "FULLERITE_GRAPHITE_INTERVAL" }}",
+            "max_buffer_size": 300,
+            "timeout": 2
+        }
+    }
+}
