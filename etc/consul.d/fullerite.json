@@ -1,0 +1,10 @@
+{
+  "service": {
+    "name": "fullerite",
+    "port": 19191,
+    "check": {
+      "script": "/opt/qnib/fullerite/bin/check.sh",
+      "interval": "10s"
+    }
+  }
+}
