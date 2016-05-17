@@ -11,7 +11,7 @@ if [ ${FULLERITE_GRAPHITE_ENABLED} == "true" ] && [ ${FULLERITE_INFLUXDB_ENABLED
     consul reload
     exit 0
 fi
-wait_for_srv carbon
+wait_for_srv influxdb
 FULLERITE_HOSTNAME=${FULLERITE_HOSTNAME-${HOSTNAME}}
 consul-template -consul localhost:8500 -once -template /etc/consul-templates/fullerite/fullerite.conf.ctmpl:/etc/fullerite/fullerite.conf
 /opt/fullerite/bin/fullerite -c /etc/fullerite/fullerite.conf
