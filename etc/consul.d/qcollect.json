@@ -1,9 +1,9 @@
 {
   "service": {
-    "name": "fullerite",
+    "name": "qcollect",
     "port": 19191,
     "check": {
-      "script": "/opt/qnib/fullerite/bin/check.sh",
+      "script": "/opt/qnib/qcollect/bin/check.sh",
       "interval": "10s"
     }
   }

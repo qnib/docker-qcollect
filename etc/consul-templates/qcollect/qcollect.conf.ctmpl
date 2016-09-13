@@ -1,0 +1,28 @@
+{
+    "prefix": "{{ env "QCOLLECT_PREFIX" }}.",
+    "interval": {{ env "QCOLLECT_INTERVAL" }},
+    "qcollectPort": 19191,
+    "internalServer": {"port":"29090","path":"/metrics"},
+    "collectorsConfigPath": "/etc/qcollect/conf.d",
+{{ $graphite := env "QCOLLECT_GRAPHITE_ENABLED" }}{{ $influxdb := env "QCOLLECT_INFLUXDB_ENABLED" }}
+    "collectors": ["DockerStats"],
+    "handlers": {
+{{ if eq $graphite "true" }}        "Graphite": {
+            "server": "{{ env "QCOLLECT_GRAPHITE_SERVER" }}",
+            "port": "2003",
+            "interval": "{{ env "QCOLLECT_GRAPHITE_INTERVAL" }}",
+            "prefixKeys": {{ env "QCOLLECT_GRAPHITE_PREFIX_DIMENSIONS" }},
+            "max_buffer_size": 300,
+            "timeout": 2
+        }{{ end }}{{ if eq $influxdb "true" }}        "InfluxDB": {
+            "server": "{{ env "QCOLLECT_INFLUXDB_SERVER" }}",
+            "port": "{{ env "QCOLLECT_INFLUXDB_PORT" }}",
+            "interval": "{{ env "QCOLLECT_INFLUXDB_INTERVAL" }}",
+            "username": "{{ env "QCOLLECT_INFLUXDB_USERNAME" }}",
+            "password": "{{ env "QCOLLECT_INFLUXDB_PASSWORD" }}",
+            "database": "{{ env "QCOLLECT_INFLUXDB_DATABASE" }}",
+            "max_buffer_size": 300,
+            "timeout": 2
+        }{{ end }}
+    }
+}
