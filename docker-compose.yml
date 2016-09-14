@@ -54,6 +54,7 @@ services:
       - QCOLLECT_INFLUXDB_ENABLED=true
       - QCOLLECT_INFLUXDB_SERVER=influxdb
       - DOCKER_HOST=unix:///var/run/docker.sock
+      - QCOLLECT_INTERVAL=2
       - CONSUL_CLUSTER_IPS=consul
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
