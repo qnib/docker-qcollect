@@ -1,4 +1,7 @@
 {
     "prefix": "DockerStats",
-    "skipContainerRegex": "{{ env "QCOLLECT_DOCKERSTATS_SKIP_REGEX" }}"
+    "skipContainerRegex": "{{ env "QCOLLECT_DOCKERSTATS_SKIP_REGEX" }}",
+    "cpu-throttle": "{{ env "QCOLLECT_DOCKERSTATS_CPUTHROTTLE" }}",
+    "per-core": "{{ env "QCOLLECT_DOCKERSTATS_CPUPERCORE" }}",
+    "block-io": "{{ env "QCOLLECT_DOCKERSTATS_BLKIO" }}"
 }
