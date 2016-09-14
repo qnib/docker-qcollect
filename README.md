@@ -24,14 +24,7 @@ And the preloaded influxdb dashboard under [localhost:3000/dashboard/db/dockerst
 
 ## Filtering
 
-**Please Note**: The collector filters out containers matching the pattern `.*_.*`, which will match all non-named containers.
+**Please Note**: The collector filters out containers matching the pattern `[a-z]+_[a-z]+`, which will match all non-named containers.
 
 Meaning: All containers started without `--name`, `container_name` (docker-compose.yml) or as a docker service.
 
-```
-$ cat etc/qcollect/conf.d/DockerStats.conf
-{
-    "prefix": "DockerStats",
-    "skipContainerRegex": ".*_.*"
-}
-```
