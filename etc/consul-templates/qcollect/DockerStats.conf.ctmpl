@@ -1,0 +1,4 @@
+{
+    "prefix": "DockerStats",
+    "skipContainerRegex": "{{ env "QCOLLECT_DOCKERSTATS_SKIP_REGEX" }}"
+}

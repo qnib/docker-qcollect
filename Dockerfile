@@ -13,7 +13,8 @@ ENV QCOLLECT_GRAPHITE_INTERVAL=4 \
     QCOLLECT_INFLUXDB_INTERVAL=4 \
     QCOLLECT_INFLUXDB_USERNAME=root \
     QCOLLECT_INFLUXDB_PASSWORD=root \
-    QCOLLECT_INFLUXDB_DATABASE=qcollect
+    QCOLLECT_INFLUXDB_DATABASE=qcollect \
+    QCOLLECT_DOCKERSTATS_SKIP_REGEX=.*_.*
 
 RUN echo "2016-06-19.1" \
  && apk add --update nmap bc jq openssl \
@@ -23,7 +24,9 @@ RUN echo "2016-06-19.1" \
  && wget -qO /usr/bin/qcollect $(/usr/local/bin/go-github rLatestUrl --ghorg qnib --ghrepo qcollect --limit 1 --regex ".*_alpine$") \
  && chmod +x /usr/bin/qcollect \
  && rm -rf /var/cache/apk/* /usr/local/bin/go-github
-ADD etc/consul-templates/qcollect/qcollect.conf.ctmpl /etc/consul-templates/qcollect/
+ADD etc/consul-templates/qcollect/qcollect.conf.ctmpl \
+    etc/consul-templates/qcollect/DockerStats.conf.ctmpl \
+    /etc/consul-templates/qcollect/
 ADD etc/qcollect/conf.d/ /etc/qcollect/conf.d/
 ADD etc/consul.d/qcollect.json /etc/consul.d/
 ADD opt/qnib/qcollect/bin/check.sh \
