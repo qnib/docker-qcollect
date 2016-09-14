@@ -27,7 +27,6 @@ RUN echo "2016-06-19.1" \
 ADD etc/consul-templates/qcollect/qcollect.conf.ctmpl \
     etc/consul-templates/qcollect/DockerStats.conf.ctmpl \
     /etc/consul-templates/qcollect/
-ADD etc/qcollect/conf.d/ /etc/qcollect/conf.d/
 ADD etc/consul.d/qcollect.json /etc/consul.d/
 ADD opt/qnib/qcollect/bin/check.sh \
     opt/qnib/qcollect/bin/start.sh \
