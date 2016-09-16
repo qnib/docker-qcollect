@@ -3,6 +3,9 @@
     "interval": {{ env "QCOLLECT_INTERVAL" }},
     "qcollectPort": {{ env "QCOLLECT_PORT" }},
     "internalServer": {"port":"{{ env "QCOLLECT_INTERNAL_SERVER_PORT" }}","path":"/metrics"},
+    "defaultDimensions": {
+        "host": "{{ env "QCOLLECT_HOSTNAME" }}"
+    },
     "collectorsConfigPath": "/etc/qcollect/conf.d",
 {{ $graphite := env "QCOLLECT_GRAPHITE_ENABLED" }}{{ $influxdb := env "QCOLLECT_INFLUXDB_ENABLED" }}
     "collectors": ["DockerStats"],
