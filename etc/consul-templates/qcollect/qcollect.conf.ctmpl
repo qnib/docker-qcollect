@@ -1,8 +1,8 @@
 {
     "prefix": "{{ env "QCOLLECT_PREFIX" }}.",
     "interval": {{ env "QCOLLECT_INTERVAL" }},
-    "qcollectPort": 19191,
-    "internalServer": {"port":"29090","path":"/metrics"},
+    "qcollectPort": {{ env "QCOLLECT_PORT" }},
+    "internalServer": {"port":"{{ env "QCOLLECT_INTERNAL_SERVER_PORT" }}","path":"/metrics"},
     "collectorsConfigPath": "/etc/qcollect/conf.d",
 {{ $graphite := env "QCOLLECT_GRAPHITE_ENABLED" }}{{ $influxdb := env "QCOLLECT_INFLUXDB_ENABLED" }}
     "collectors": ["DockerStats"],
