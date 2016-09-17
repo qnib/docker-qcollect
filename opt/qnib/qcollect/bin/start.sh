@@ -27,4 +27,5 @@ if [ "${QCOLLECT_INFLUXDB_ENABLED}" == "true" ] && [ "X${QCOLLECT_SKIP_INFLUX_CH
 fi
 consul-template -consul localhost:8500 -once -template /etc/consul-templates/qcollect/qcollect.conf.ctmpl:/etc/qcollect/qcollect.conf
 consul-template -once -template /etc/consul-templates/qcollect/DockerStats.conf.ctmpl:/etc/qcollect/conf.d/DockerStats.conf
+consul-template -once -template /etc/consul-templates/qcollect/OpenTSDB.conf.ctmpl:/etc/qcollect/conf.d/OpenTSDB.conf
 /usr/bin/qcollect -c /etc/qcollect/qcollect.conf

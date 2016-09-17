@@ -32,6 +32,7 @@ RUN echo "2016-06-19.1" \
  && rm -rf /var/cache/apk/* /usr/local/bin/go-github
 ADD etc/consul-templates/qcollect/qcollect.conf.ctmpl \
     etc/consul-templates/qcollect/DockerStats.conf.ctmpl \
+    etc/consul-templates/qcollect/OpenTSDB.conf.ctmpl \
     /etc/consul-templates/qcollect/
 ADD etc/consul.d/qcollect.json /etc/consul.d/
 ADD opt/qnib/qcollect/bin/check.sh \
