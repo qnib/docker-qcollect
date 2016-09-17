@@ -7,8 +7,8 @@
         "host": "{{ env "QCOLLECT_HOSTNAME" }}"
     },
     "collectorsConfigPath": "/etc/qcollect/conf.d",
-{{ $graphite := env "QCOLLECT_GRAPHITE_ENABLED" }}{{ $influxdb := env "QCOLLECT_INFLUXDB_ENABLED" }}
-    "collectors": ["DockerStats"],
+{{ $graphite := env "QCOLLECT_GRAPHITE_ENABLED" }}{{ $influxdb := env "QCOLLECT_INFLUXDB_ENABLED" }}{{ $otsdbCol := env "QCOLLECT_OPENTSDB_COLLECTOR_ENABLED" }}
+    "collectors": ["DockerStats"{{ if eq $otsdbCol "true" }},"OpenTSDB"{{ end }}],
     "handlers": {
 {{ if eq $graphite "true" }}        "Graphite": {
             "server": "{{ env "QCOLLECT_GRAPHITE_SERVER" }}",
