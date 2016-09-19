@@ -1,9 +1,9 @@
 {
   "service": {
     "name": "qcollect",
-    "port": 19191,
+    "port": 29090,
     "check": {
-      "script": "/opt/qnib/qcollect/bin/check.sh",
+      "script": "/opt/qnib/qcollect/bin/healthcheck.sh",
       "interval": "10s"
     }
   }

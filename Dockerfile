@@ -37,6 +37,7 @@ ADD etc/consul-templates/qcollect/qcollect.conf.ctmpl \
 ADD etc/consul.d/qcollect.json /etc/consul.d/
 ADD opt/qnib/qcollect/bin/check.sh \
     opt/qnib/qcollect/bin/start.sh \
+    opt/qnib/qcollect/bin/healthcheck.sh \
     opt/qnib/qcollect/bin/warn.sh \
     /opt/qnib/qcollect/bin/
 ADD etc/supervisord.d/qcollect.ini /etc/supervisord.d/
