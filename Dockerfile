@@ -22,8 +22,8 @@ ENV QCOLLECT_GRAPHITE_INTERVAL=4 \
     QCOLLECT_DOCKERSTATS_BLKIO=true \
     QCOLLECT_DOCKERSTATS_SKIP_REGEX="[a-z]+_[a-z]+\$"
 
-RUN echo "2016-06-19.1" \
- && apk add --update nmap bc jq openssl \
+RUN echo "2017-02-20.1" \
+ && apk add --no-cache nmap bc jq openssl \
  && wget -qO /usr/local/bin/go-github https://github.com/qnib/go-github/releases/download/0.2.2/go-github_0.2.2_MuslLinux \
  && chmod +x /usr/local/bin/go-github \
  && echo "# $(/usr/local/bin/go-github rLatestUrl --ghorg qnib --ghrepo qcollect --limit 1 --regex '.*_alpine$')" \
